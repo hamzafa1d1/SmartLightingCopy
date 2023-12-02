@@ -32,6 +32,7 @@ To develop this project we use:
 # Deployment Machine
 With our school mail, we can get a 100$ voucher inside of Microsoft Azure. With this voucher, we can create a virtual machine capable of hosting the middleware, the mosquitto broker and the database. The virtual machine have the following characteristics:
 - Ram: 4GB
+- 
 - vCPUS: 2
 - Ressource disk size: 8GB
 
