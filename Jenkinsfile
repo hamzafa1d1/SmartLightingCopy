@@ -1,10 +1,6 @@
 pipeline {
     agent any
-   
-    when {
-      branch 'main'
-    }
-   
+    
     environment {
         GITHUB_REPO_URL = 'https://github.com/hamzafa1d1/SmartLightingCopy.git'
         GITHUB_CREDENTIALS = credentials('githubtoken')
@@ -16,6 +12,10 @@ pipeline {
     stages {
         
         stage('Initialization') {
+             when {
+                  branch 'main'
+                }
+   
             steps {
                 echo "GITHUB_REPO_URL: ${GITHUB_REPO_URL}"
                 echo "WILDFLY_HOME: ${WILDFLY_HOME}"
@@ -25,6 +25,10 @@ pipeline {
             }
         }
         stage('Build') {
+            when {
+                  branch 'main'
+                }
+            
             steps {
                 dir(PROJECT_DIR) {
                     script {
@@ -36,6 +40,10 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+                  branch 'main'
+                }
+            
             steps {
                 dir(PROJECT_DIR) {
                     script {
@@ -47,6 +55,11 @@ pipeline {
         }
 
         stage('Deploy to WildFly') {
+            
+            when {
+                  branch 'main'
+                }
+            
             steps {
                 dir(PROJECT_DIR) {
                     script {
