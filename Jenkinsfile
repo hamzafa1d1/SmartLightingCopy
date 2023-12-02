@@ -1,15 +1,20 @@
-   environment {
-        GITHUB_REPO_URL = 'https://github.com/J4wHar/CoTProject.git'
-        GITHUB_CREDENTIALS = credentials('githubtoken')
-        WILDFLY_HOME = '/opt/wildfly'
-        M3_HOME = '/opt/maven'
-        PROJECT_DIR = 'server'  // Update to your actual project directory
-    }
-    
+pipeline {
+    agent any
+   
     when{
       branch 'main'
     }
+   
+    environment {
+        GITHUB_REPO_URL = 'https://github.com/hamzafa1d1/SmartLightingCopy.git'
+        GITHUB_CREDENTIALS = credentials('githubtoken')
+        WILDFLY_HOME = '/opt/wildfly'
+        M3_HOME = '/opt/maven'
+        PROJECT_DIR = 'smart_lighting'  // Update to your actual project directory
+    }
+    
     stages {
+        
         stage('Initialization') {
             steps {
                 echo "GITHUB_REPO_URL: ${GITHUB_REPO_URL}"
@@ -45,7 +50,7 @@
             steps {
                 dir(PROJECT_DIR) {
                     script {
-                        sh "$WILDFLY_HOME/bin/jboss-cli.sh --connect -u=\"admin\" -p=\"admin\" --command=\"deploy target/jakartaee-hello-world.war\""
+                        sh "$WILDFLY_HOME/bin/jboss-cli.sh --connect -u=\"admin\" -p=\"admin\"  --command=\"deploy --force target/smartlighting-1.0-SNAPSHOT.war\""
                       
                     }
                 }
