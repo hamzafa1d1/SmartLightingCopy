@@ -2,7 +2,6 @@ pipeline {
     agent any
     
     environment {
-        ENV = $ENV
         GITHUB_REPO_URL = 'https://github.com/hamzafa1d1/SmartLightingCopy.git'
         GITHUB_CREDENTIALS = credentials('githubtoken')
         WILDFLY_HOME = '/opt/wildfly'
@@ -14,6 +13,7 @@ pipeline {
         
         stage('Initialization') {
             steps {
+                echo $ENV
                 echo "GITHUB_REPO_URL: ${GITHUB_REPO_URL}"
                 echo "WILDFLY_HOME: ${WILDFLY_HOME}"
                 echo "PROJECT_DIR: ${PROJECT_DIR}"
