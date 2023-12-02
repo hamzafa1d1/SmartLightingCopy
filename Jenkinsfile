@@ -10,8 +10,10 @@ pipeline {
     }
     
     stages {
-        
         stage('Initialization') {
+             when {
+            expression { env.ENV == "PROD" }
+                    }
             steps {
                 echo " env ${ENV}"
                 echo "GITHUB_REPO_URL: ${GITHUB_REPO_URL}"
