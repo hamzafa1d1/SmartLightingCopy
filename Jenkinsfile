@@ -13,7 +13,7 @@ pipeline {
         
         stage('Initialization') {
             steps {
-                sh "echo {env.$ENV}" 
+                echo {env.$ENV} 
                 echo "GITHUB_REPO_URL: ${GITHUB_REPO_URL}"
                 echo "WILDFLY_HOME: ${WILDFLY_HOME}"
                 echo "PROJECT_DIR: ${PROJECT_DIR}"
