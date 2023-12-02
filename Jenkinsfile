@@ -19,13 +19,6 @@
                 echo "PATH: ${PATH}"
             }
         }
-        
-        stage('Checkout') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[credentialsId: GITHUB_CREDENTIALS, url: GITHUB_REPO_URL]]])
-            }
-        }
-
         stage('Build') {
             steps {
                 dir(PROJECT_DIR) {
