@@ -47,7 +47,7 @@ pipeline {
           steps {
               dir(PROJECT_DIR) {
                 withSonarQubeEnv(installationName: 'sq1') { 
-                  sh "$M3_HOME/bin/mvn clean deploy org.sonarsource.scanner.maven:sonar-maven-plugin:sonar"
+                  sh "$M3_HOME/bin/mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar"
                 }
             }
           }
