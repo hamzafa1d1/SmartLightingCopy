@@ -45,8 +45,10 @@ pipeline {
         
         stage('Scan') {
           steps {
-            withSonarQubeEnv(installationName: 'sq1') { 
-              sh "$M3_HOME/bin/mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -f smart_lighting/pom.xml -Dsonar.java.binaries=target/classes"
+              dir(PROJECT_DIR) {
+                withSonarQubeEnv(installationName: 'sq1') { 
+                  sh "$M3_HOME/bin/mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -f smart_lighting/pom.xml -Dsonar.java.binaries=target/classes"
+                }
             }
           }
         }
