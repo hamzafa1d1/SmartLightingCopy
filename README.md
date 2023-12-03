@@ -41,3 +41,7 @@ Enabling TLS1.3 only on wildfly helps to generate A grading on SSLabs.
 ![Alt text](https://github.com/karygauss03/SmartLighting/blob/main/images/certificate-A.JPG)
 
 
+
+
+
+
