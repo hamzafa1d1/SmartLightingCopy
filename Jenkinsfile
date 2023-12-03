@@ -20,6 +20,15 @@ pipeline {
                 echo "PATH: ${PATH}"
             }
         }
+        
+        stage('Scan') {
+          steps {
+            withSonarQubeEnv(installationName: 'sq1') { 
+              sh "$M3_HOME/bin/mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar -f smart_lighting/pom.xml"
+            }
+          }
+        }
+        
         stage('Build') {
             steps {
                 dir(PROJECT_DIR) {
@@ -40,14 +49,6 @@ pipeline {
                     }
                 }
             }
-        }
-        
-        stage('Scan') {
-          steps {
-            withSonarQubeEnv(installationName: 'sq1') { 
-              sh "$M3_HOME/bin/mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar -f smart_lighting/pom.xml"
-            }
-          }
         }
         
         stage("Quality Gate") {
